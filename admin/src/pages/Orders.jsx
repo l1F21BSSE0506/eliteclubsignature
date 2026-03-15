@@ -93,7 +93,7 @@ const Orders = ({ token }) => {
               {order.amount}
             </p>
             <select
-              onChange={(event) => statusHandler(event, order._id)}
+              onChange={(event) => statusHandler(event, order.id)}
               value={order.status}
               className="p-2 font-semibold"
             >

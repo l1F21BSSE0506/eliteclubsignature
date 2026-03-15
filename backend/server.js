@@ -30,11 +30,14 @@ app.get('/', (req, res) => {
 const startServer = async () => {
     try {
         await connectCloudinary();
+        if (!supabase) {
+            console.error("❌ Backend started but SUPABASE is NOT connected. API calls will fail.");
+        }
         if (process.env.NODE_ENV !== 'production') {
-            app.listen(port, () => console.log('Server started on port: ' + port));
+            app.listen(port, () => console.log('🚀 Server started on port: ' + port));
         }
     } catch (error) {
-        console.error("Failed to start server:", error);
+        console.error("❌ Failed to start server:", error);
     }
 }
 

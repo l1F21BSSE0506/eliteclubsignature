@@ -47,7 +47,8 @@ const addProduct = async (req, res) => {
             description,
             price: Number(price),
             category,
-            subCategory,
+            // Use lowercase 'subcategory' to match standard Postgres behavior
+            subcategory: subCategory, 
             sizes: JSON.parse(sizes),
             bestseller: bestseller === "true" ? true:false,
             discount: Number(discount) || 0,
@@ -56,7 +57,6 @@ const addProduct = async (req, res) => {
         };
 
         // ✅ Save product in DB
-        console.log("Saving product to DB...");
         const { data, error } = await supabase
             .from('products')
             .insert([productData]);
@@ -78,7 +78,7 @@ const listProducts = async (req, res) => {
     try{
         const { data: products, error } = await supabase
             .from('products')
-            .select('*');
+            .select('*'); // Supabase returns columns as is
 
         if (error) throw error;
         res.json({success:true, products})
@@ -109,11 +109,11 @@ const removeProduct = async (req, res) => {
 // function for single product info
 const singleProduct = async (req, res) => {
     try {
-        const { productId } = req.body
+        const { id } = req.body;
         const { data: product, error } = await supabase
             .from('products')
             .select('*')
-            .eq('id', productId)
+            .eq('id', id)
             .single();
 
         if (error) throw error;

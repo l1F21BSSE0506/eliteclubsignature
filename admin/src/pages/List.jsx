@@ -99,9 +99,9 @@ const List = () => {
                   type="number" 
                   className="w-16 border px-1" 
                   defaultValue={item.discount || 0} 
-                  onBlur={(e) => updateDiscount(item._id, e.target.value)}
+                  onBlur={(e) => updateDiscount(item.id, e.target.value)}
               />
-              <p onClick={()=> removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
+              <p onClick={()=> removeProduct(item.id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
             </div>
           ))
         }

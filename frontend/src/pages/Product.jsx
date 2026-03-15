@@ -14,10 +14,12 @@ const Product = () => {
   const [activeTab, setActiveTab] = useState('description'); // Added activeTab state
 
   const fetchProductData = () => {
-    const product = products.find((item) => item._id === productId);
+    // If the product data is already available from the context, use it.
+    // Ensure both IDs are strings for comparison.
+    const product = products.find((item) => String(item.id) === String(productId));
     if (product) {
       setProductData(product);
-      setImage(product.images[0]); // Assuming `image` is an array of URLs
+      setImage(product.images[0]);
     }
   };
 
@@ -101,7 +103,7 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={()=> addToCart(productData._id, size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+          <button onClick={()=> addToCart(productData.id, size)} className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
             ADD TO CART
           </button>
           <hr className="mt-8 sm:w-4/5" />

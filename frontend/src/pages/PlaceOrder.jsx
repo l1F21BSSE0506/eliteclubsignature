@@ -64,7 +64,7 @@ const PlaceOrder = () => {
       Object.keys(cartItems).forEach((itemId) => {
         Object.keys(cartItems[itemId]).forEach((size) => {
           if (cartItems[itemId][size] > 0) {
-            const itemInfo = structuredClone(products.find(product => product._id === itemId));
+            const itemInfo = structuredClone(products.find(product => product.id === itemId));
             if (itemInfo) {
               itemInfo.size = size;
               itemInfo.quantity = cartItems[itemId][size];
