@@ -25,7 +25,7 @@ const Collection = () => {
   }
 
   const toggleSubCategory = (e) => {
-    if(subCategory.includes(e.target.value)){
+    if(subcategory.includes(e.target.value)){
       setSubCategory(prev => prev.filter(item => item !== e.target.value));
     }
     else{

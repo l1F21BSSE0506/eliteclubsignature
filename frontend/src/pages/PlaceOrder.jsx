@@ -85,7 +85,7 @@ const PlaceOrder = () => {
       const requestHeaders = token ? { token } : {};
 
       switch (method) {
-        case 'cod':
+        case 'cod': {
           const response = await axios.post(`${backendUrl}/api/order/place`, orderData, { headers: requestHeaders });
           if (response.data.success) {
             setCartItems({});
@@ -94,7 +94,8 @@ const PlaceOrder = () => {
             toast.error(response.data.message);
           }
           break;
-        case 'stripe':
+        }
+        case 'stripe': {
           const responseStripe = await axios.post(`${backendUrl}/api/order/stripe`, orderData, { headers: requestHeaders });
           if (responseStripe.data.success) {
             const { session_url } = responseStripe.data;
@@ -103,7 +104,8 @@ const PlaceOrder = () => {
             toast.error(responseStripe.data.message);
           }
           break;
-        case 'razorpay':
+        }
+        case 'razorpay': {
           const responseRazorpay = await axios.post(`${backendUrl}/api/order/razorpay`, orderData, { headers: requestHeaders });
           if (responseRazorpay.data.success) {
             initPay(responseRazorpay.data.order);
@@ -111,6 +113,7 @@ const PlaceOrder = () => {
             toast.error(responseRazorpay.data.message);
           }
           break;
+        }
         default:
           break;
       }
