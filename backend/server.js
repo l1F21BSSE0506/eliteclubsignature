@@ -27,21 +27,12 @@ app.get('/', (req, res) => {
     res.send("API working")
 })
 
-const startServer = async () => {
-    try {
-        await connectCloudinary();
-        if (!supabase) {
-            console.error("❌ Backend started but SUPABASE is NOT connected. API calls will fail.");
-        }
-        if (process.env.NODE_ENV !== 'production') {
-            app.listen(port, () => console.log('🚀 Server started on port: ' + port));
-        }
-    } catch (error) {
-        console.error("❌ Failed to start server:", error);
-    }
-}
+// Vercel Serverless entry point
+connectCloudinary();
 
-startServer();
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => console.log('🚀 Server started on port: ' + port));
+}
 
 // Export the app for Vercel Serverless Functions
 export default app;
