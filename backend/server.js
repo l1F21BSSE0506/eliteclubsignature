@@ -15,7 +15,12 @@ const port = process.env.PORT || 4000
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ['https://eliteclubsignature.com', 'https://www.eliteclubsignature.com', 'https://admin.eliteclubsignature.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+    credentials: true
+}))
 
 // api endpoints
 app.use('/api/user', userRouter);
