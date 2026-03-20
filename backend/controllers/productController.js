@@ -75,17 +75,21 @@ const addProduct = async (req, res) => {
 
 // function for list product
 const listProducts = async (req, res) => {
-    try{
+    try {
+        if (!supabase) {
+            return res.status(500).json({ success: false, message: "Supabase client not initialized. Check your environment variables." });
+        }
+
         const { data: products, error } = await supabase
             .from('products')
             .select('*'); // Supabase returns columns as is
 
         if (error) throw error;
-        res.json({success:true, products})
+        res.json({ success: true, products })
     }
-    catch (error){
-        console.log(error);
-        res.json({success:false, message: error.message})
+    catch (error) {
+        console.error("List Products Error:", error);
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 

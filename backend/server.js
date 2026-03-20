@@ -20,6 +20,7 @@ app.use(cors({
         'https://eliteclubsignature.com', 
         'https://www.eliteclubsignature.com', 
         'https://admin.eliteclubsignature.com',
+        'https://eliteclubsignature.vercel.app',
         'http://localhost:5173',
         'http://localhost:5174'
     ],
