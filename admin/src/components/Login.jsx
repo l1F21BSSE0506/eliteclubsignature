@@ -9,8 +9,10 @@ const Login = ({setToken}) => {
     const onSubmitHandler = async (e) =>{
         try{
             e.preventDefault();
-            console.log("Attempting login to:", backendUrl + "/api/user/admin");
-            const response = await axios.post(backendUrl + "/api/user/admin", {email, password})
+            // Remove trailing slash if present to avoid double slashes
+            const url = backendUrl.endsWith('/') ? backendUrl.slice(0, -1) : backendUrl;
+            console.log("Attempting login to:", url + "/api/user/admin");
+            const response = await axios.post(url + "/api/user/admin", {email, password})
             console.log("Login response:", response.data);
             if(response.data.success){
                 setToken(response.data.token);
