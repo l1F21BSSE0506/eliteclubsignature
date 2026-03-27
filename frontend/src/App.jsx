@@ -10,7 +10,9 @@ import PlaceOrder from './pages/PlaceOrder';
 import Orders from './pages/Orders';
 import Collection from './pages/Collection'; 
 import Verify from './pages/Verify';
-import NavBar from './components/NavBar';
+import Delivery from './pages/Delivery';
+import Privacy from './pages/Privacy';
+import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 import { ToastContainer, toast } from "react-toastify";
@@ -28,6 +30,8 @@ const App = () => {
         <Route path="/collection" element={<Collection />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/delivery" element={<Delivery />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
