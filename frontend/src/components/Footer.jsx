@@ -8,7 +8,7 @@ const Footer = () => {
         <div>
             <img src={assets.logo} className='mb-5 w-32' alt="" />
             <p className='w-full md:w-2/3 text-gray-600 uppercase tracking-widest text-[10px]'>
-              LAMA is a lifestyle brand based in Pakistan. We provide high-quality fashion at affordable prices.
+              Elite club signature is a lifestyle brand based in Pakistan. We provide high-quality fashion at affordable prices.
             </p>
         </div>
         <div>
@@ -24,7 +24,7 @@ const Footer = () => {
             <p className='text-sm font-semibold mb-5'>GET IN TOUCH</p>
             <ul className='flex flex-col gap-1 text-gray-600 text-[12px]'>
                 <li>+92 321 444 5262</li>
-                <li>care@lamaretail.com</li>
+                <li>care@eliteclubsignature.com</li>
                 <li>Instagram</li>
                 <li>Facebook</li>
                 <li>YouTube</li>
@@ -34,7 +34,7 @@ const Footer = () => {
       </div>
       <div>
             <hr />
-            <p className='py-5 text-xs text-center uppercase tracking-widest text-gray-500'>© 2024 LAMA RETAIL. ALL RIGHTS RESERVED.</p>
+            <p className='py-5 text-xs text-center uppercase tracking-widest text-gray-500'>© 2024 Elite club signature. ALL RIGHTS RESERVED.</p>
       </div>
     </div>
   )
