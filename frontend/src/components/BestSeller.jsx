@@ -13,7 +13,7 @@ const BestSeller = () => {
   return (
     <div className='my-10'>
       <div className='text-center py-8'>
-        <Title text1={'BEST'} text2={'SELLERS'}/>
+        <Title text1={'PENT'} text2={'COLLECTION'}/>
         <p className='w-3/4 m-auto text-xs sm:text-sm text-gray-500 uppercase tracking-widest'>
           Our most popular styles, as chosen by you.
         </p>
