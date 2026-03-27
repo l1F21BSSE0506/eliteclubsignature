@@ -23,8 +23,8 @@ const Footer = () => {
         <div>
             <p className='text-sm font-semibold mb-5'>GET IN TOUCH</p>
             <ul className='flex flex-col gap-1 text-gray-600 text-[12px]'>
-                <li>+92 321 444 5262</li>
-                <li>care@eliteclubsignature.com</li>
+                <li>03334655184</li>
+                <li>Eliteclubsignature@gmail.com</li>
                 <li>Instagram</li>
                 <li>Facebook</li>
                 <li>YouTube</li>
