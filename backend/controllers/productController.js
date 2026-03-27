@@ -132,10 +132,15 @@ const singleProduct = async (req, res) => {
 // function to update product
 const updateProduct = async (req, res) => {
     try {
-        const { id, discount } = req.body;
+        const { id, discount, bestseller, subcategory } = req.body;
+        const updateFields = {};
+        if (discount !== undefined) updateFields.discount = discount;
+        if (bestseller !== undefined) updateFields.bestseller = bestseller;
+        if (subcategory !== undefined) updateFields.subcategory = subcategory;
+
         const { error } = await supabase
             .from('products')
-            .update({ discount })
+            .update(updateFields)
             .eq('id', id);
 
         if (error) throw error;

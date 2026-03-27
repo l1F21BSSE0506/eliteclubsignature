@@ -8,7 +8,12 @@ const LatestCollection = () => {
   const [latestProducts, setLatestProducts] = useState([]);
 
   useEffect(() => {
-    setLatestProducts(products.slice(0, 10));
+    const subKey = 'subcategory';
+    const filtered = products.filter(p => {
+      const val = p[subKey] ?? p.subCategory;
+      return val === 'New In';
+    });
+    setLatestProducts(filtered);
   }, [products]); // Ensure that you re-fetch products if they change
 
   return (
