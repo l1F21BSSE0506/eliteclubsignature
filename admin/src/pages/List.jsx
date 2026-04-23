@@ -6,6 +6,29 @@ import { useState, useEffect } from 'react'
 
 const List = () => {
   const [list, setList] = useState([])
+  const subCategoryOptions = [
+    'Topwear',
+    'Bottomwear',
+    'Winterwear',
+    'New In',
+    'Spring Summer',
+    'Shirts',
+    'T-shirts',
+    'Polo',
+    'Blazers',
+    'Tank Tops',
+    'Boxers',
+    'Bottoms',
+    'Sweaters & Cardigans',
+    'Jackets & Coats',
+    'Hoodies & Sweatshirts',
+    'Bras',
+    'Briefs',
+    'True Body',
+    'Tops & Blouses',
+    'Dresses & Skirts',
+  ];
+
   const fetchList = async()=>{
     try{
       const response = await axios.get(backendUrl + '/api/product/list')
@@ -27,6 +50,32 @@ const List = () => {
   }, [])
 
   console.log("Fetched Products:", list) 
+
+  const updateProductField = async (id, payload, successMessage) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        toast.error('Authentication token not found');
+        return;
+      }
+
+      const response = await axios.post(
+        backendUrl + '/api/product/update',
+        { id, ...payload },
+        { headers: { token } }
+      );
+
+      if (response.data.success) {
+        toast.success(successMessage);
+        fetchList();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || error.message);
+    }
+  };
 
   const removeProduct = async (id) => {
     try {
@@ -57,20 +106,7 @@ const List = () => {
   };
   
   const updateDiscount = async (id, discount) => {
-      try {
-          const token = localStorage.getItem('token');
-          if (!token) return;
-          const response = await axios.post(backendUrl + '/api/product/update', { id, discount }, { headers: { token } });
-          if (response.data.success) {
-              toast.success("Discount Updated");
-              fetchList();
-          } else {
-              toast.error(response.data.message);
-          }
-      } catch (error) {
-          console.error(error);
-          toast.error(error.message);
-      }
+      updateProductField(id, { discount }, "Discount Updated");
   }
 
   return (
@@ -102,51 +138,24 @@ const List = () => {
                   defaultValue={item.discount || 0} 
                   onBlur={(e) => updateDiscount(item.id, e.target.value)}
               />
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <label className="flex items-center gap-1 text-[12px]">
                   <input
                     type="checkbox"
                     defaultChecked={item.bestseller}
-                    onChange={async (e) => {
-                      try {
-                        const token = localStorage.getItem('token');
-                        if (!token) return;
-                        const response = await axios.post(backendUrl + '/api/product/update', { id: item.id, bestseller: e.target.checked }, { headers: { token } });
-                        if (response.data.success) {
-                          toast.success("Bestseller updated");
-                          fetchList();
-                        } else {
-                          toast.error(response.data.message);
-                        }
-                      } catch (error) {
-                        console.error(error);
-                        toast.error(error.message);
-                      }
-                    }}
+                    onChange={(e) => updateProductField(item.id, { bestseller: e.target.checked }, "Bestseller Updated")}
                   />
                   <span>Bestseller</span>
                 </label>
-                <button
-                  className="border px-2 py-1 text-[12px] hover:bg-black hover:text-white"
-                  onClick={async () => {
-                    try {
-                      const token = localStorage.getItem('token');
-                      if (!token) return;
-                      const response = await axios.post(backendUrl + '/api/product/update', { id: item.id, subcategory: 'New In' }, { headers: { token } });
-                      if (response.data.success) {
-                        toast.success("Marked as New In");
-                        fetchList();
-                      } else {
-                        toast.error(response.data.message);
-                      }
-                    } catch (error) {
-                      console.error(error);
-                      toast.error(error.message);
-                    }
-                  }}
+                <select
+                  className="border px-2 py-1 text-[12px] min-w-[130px]"
+                  value={item.subcategory ?? item.subCategory ?? 'Topwear'}
+                  onChange={(e) => updateProductField(item.id, { subcategory: e.target.value }, "Subcategory Updated")}
                 >
-                  New In
-                </button>
+                  {subCategoryOptions.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
               </div>
               <p onClick={()=> removeProduct(item.id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
             </div>
