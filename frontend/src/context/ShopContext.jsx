@@ -107,7 +107,12 @@ const ShopContextProvider = (props) => {
         try {
             const response = await axios.get(backendUrl + '/api/product/list')
             if(response.data.success){
-                setProducts(response.data.products);
+                const normalizedProducts = response.data.products.map((product) => ({
+                    ...product,
+                    // Keep frontend consistent even if DB column is `subcategory`.
+                    subCategory: product.subCategory ?? product.subcategory ?? '',
+                }));
+                setProducts(normalizedProducts);
             }
             else{
                 toast.error(response.data.message)

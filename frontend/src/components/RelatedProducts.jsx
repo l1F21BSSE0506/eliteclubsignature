@@ -10,8 +10,12 @@ const RelatedProducts = ({ category, subCategory }) => {
   useEffect(() => {
     if (products.length > 0) {
       let productsCopy = products.slice();
+      const selectedSubCategory = subCategory ?? '';
       productsCopy = productsCopy.filter((item) => category === item.category);
-      productsCopy = productsCopy.filter((item) => subCategory === item.subCategory);
+      productsCopy = productsCopy.filter((item) => {
+        const itemSubCategory = item.subCategory ?? item.subcategory ?? '';
+        return selectedSubCategory === itemSubCategory;
+      });
       setRelated(productsCopy.slice(0, 5));
     }
   }, [products, category, subCategory]);

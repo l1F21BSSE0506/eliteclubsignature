@@ -42,7 +42,10 @@ const Collection = () => {
       productsCopy = productsCopy.filter(item => category.includes(item.category))
     }
     if(subcategory.length > 0){
-      productsCopy = productsCopy.filter(item => subcategory.includes(item.subCategory))
+      productsCopy = productsCopy.filter((item) => {
+        const itemSubCategory = item.subCategory ?? item.subcategory;
+        return subcategory.includes(itemSubCategory);
+      })
     }
     setFilterProducts(productsCopy)
   }
