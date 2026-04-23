@@ -13,7 +13,6 @@ const Home = () => {
       <Hero/>
       <LatestCollection/>
       <BestSeller/>
-      <DiscountOffers/>
       <div className="my-10">
         <img
           src={assets.jeanbanner}
@@ -21,6 +20,7 @@ const Home = () => {
           className="w-full h-auto rounded"
         />
       </div>
+      <DiscountOffers/>
       <OurPolicy/>
       <NewsletterBox/>
     </div>
