@@ -147,6 +147,14 @@ const List = () => {
                   />
                   <span>Bestseller</span>
                 </label>
+                <label className="flex items-center gap-1 text-[12px]">
+                  <input
+                    type="checkbox"
+                    defaultChecked={item.discountedOffer}
+                    onChange={(e) => updateProductField(item.id, { discountedOffer: e.target.checked }, "Discounted Offer Updated")}
+                  />
+                  <span>Discounted Offer</span>
+                </label>
                 <select
                   className="border px-2 py-1 text-[12px] min-w-[130px]"
                   value={item.subcategory ?? item.subCategory ?? 'Topwear'}

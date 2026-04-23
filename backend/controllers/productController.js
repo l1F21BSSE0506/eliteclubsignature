@@ -15,7 +15,7 @@ const addProduct = async (req, res) => {
         console.log("Body:", req.body);
         console.log("Files:", req.files ? Object.keys(req.files) : "No files");
 
-        const { name, description, price, category, subCategory, sizes, bestseller, discount } = req.body;
+        const { name, description, price, category, subCategory, sizes, bestseller, discount, discountedOffer } = req.body;
 
         // ✅ Ensure req.files exists
         if (!req.files || Object.keys(req.files).length === 0) {
@@ -52,6 +52,7 @@ const addProduct = async (req, res) => {
             sizes: JSON.parse(sizes),
             bestseller: bestseller === "true" ? true:false,
             discount: Number(discount) || 0,
+            discountedOffer: discountedOffer === "true" ? true : false,
             images: imagesUrl,
             date: new Date().toISOString(),
         };
@@ -132,11 +133,12 @@ const singleProduct = async (req, res) => {
 // function to update product
 const updateProduct = async (req, res) => {
     try {
-        const { id, discount, bestseller, subcategory } = req.body;
+        const { id, discount, bestseller, subcategory, discountedOffer } = req.body;
         const updateFields = {};
         if (discount !== undefined) updateFields.discount = discount;
         if (bestseller !== undefined) updateFields.bestseller = bestseller;
         if (subcategory !== undefined) updateFields.subcategory = subcategory;
+        if (discountedOffer !== undefined) updateFields.discountedOffer = discountedOffer;
 
         const { error } = await supabase
             .from('products')
