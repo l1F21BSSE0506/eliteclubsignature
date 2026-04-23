@@ -16,8 +16,6 @@ const DiscountOffers = () => {
     setDiscountProducts(filtered);
   }, [products]);
 
-  if (discountProducts.length === 0) return null;
-
   return (
     <div className='my-10'>
       <div className='text-center py-8'>
@@ -26,18 +24,24 @@ const DiscountOffers = () => {
           Featured deals managed from your admin dashboard.
         </p>
       </div>
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
-        {discountProducts.map((item, index) => (
-          <ProductItem
-            key={index}
-            id={item.id}
-            image={item.images}
-            name={item.name}
-            price={item.price}
-            discount={item.discount}
-          />
-        ))}
-      </div>
+      {discountProducts.length === 0 ? (
+        <p className='text-center text-sm text-gray-500 uppercase tracking-wider'>
+          No discounted offers available yet.
+        </p>
+      ) : (
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+          {discountProducts.map((item, index) => (
+            <ProductItem
+              key={index}
+              id={item.id}
+              image={item.images}
+              name={item.name}
+              price={item.price}
+              discount={item.discount}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -16,6 +16,7 @@ const Add = ({token}) => {
   const [category, setCategory] = useState("Men")
   const [subCategory, setSubCategoy] = useState("Topwear")
   const [bestseller, setBestseller] = useState(false)
+  const [discountedOffer, setDiscountedOffer] = useState(false)
   const [discount, setDiscount] = useState(0);
   const [sizes, setSizes] = useState([])
 
@@ -31,6 +32,7 @@ const Add = ({token}) => {
       formData.append("category", category)
       formData.append("subCategory", subCategory)
       formData.append("bestseller", bestseller)
+      formData.append("discountedOffer", discountedOffer)
       formData.append("discount", discount)
       formData.append("sizes", JSON.stringify(sizes))
 
@@ -53,6 +55,7 @@ const Add = ({token}) => {
         setImage4(false)
         setPrice('')
         setDiscount(0)
+        setDiscountedOffer(false)
       }
       else{
         toast.error(response.data.message)
@@ -169,10 +172,16 @@ const Add = ({token}) => {
         </div>
       </div>
     </div>
-    <div className='flex gap-2 mt-2'>
+    <div className='flex gap-6 mt-2 flex-wrap'>
+      <div className='flex gap-2'>
         <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller'/>
         <label className='cursor-pointer' htmlFor="bestseller">Add to bestseller</label>
       </div>
+      <div className='flex gap-2'>
+        <input onChange={() => setDiscountedOffer(prev => !prev)} checked={discountedOffer} type="checkbox" id='discountedOffer'/>
+        <label className='cursor-pointer' htmlFor="discountedOffer">Add to discounted offer</label>
+      </div>
+    </div>
     <button className='w-28 py-3 mt-4 bg-black text-white'>ADD</button>
     </form>
   )
