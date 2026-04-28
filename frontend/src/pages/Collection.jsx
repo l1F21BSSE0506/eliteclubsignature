@@ -107,6 +107,12 @@ const Collection = () => {
           <p className='flex gap-2'>
             <input className='w-3' type="checkbox" onChange={toggleCategory} value={'Kids'}/>Kids
           </p>
+          <p className='flex gap-2'>
+            <input className='w-3' type="checkbox" onChange={toggleCategory} value={'Fragrance'}/>Fragrance
+          </p>
+          <p className='flex gap-2'>
+            <input className='w-3' type="checkbox" onChange={toggleCategory} value={'Accessories'}/>Accessories
+          </p>
         </div>
       </div>
       {/* Subcategory filters */}
@@ -139,6 +145,10 @@ const Collection = () => {
           <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'True Body'}/>True Body</p>
           <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Tops & Blouses'}/>Tops & Blouses</p>
           <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Dresses & Skirts'}/>Dresses & Skirts</p>
+          <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Caps'}/>Caps</p>
+          <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Belts'}/>Belts</p>
+          <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Socks'}/>Socks</p>
+          <p className='flex gap-2'><input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Boxer'}/>Boxer</p>
         </div>
       </div>
       </div>

@@ -110,6 +110,8 @@ const Add = ({token}) => {
           <option value="Men">Men</option>
           <option value="Women">Women</option>
           <option value="Kids">Kids</option>
+          <option value="Fragrance">Fragrance</option>
+          <option value="Accessories">Accessories</option>
         </select>
       </div>
 
@@ -136,6 +138,10 @@ const Add = ({token}) => {
           <option value="True Body">True Body</option>
           <option value="Tops & Blouses">Tops & Blouses</option>
           <option value="Dresses & Skirts">Dresses & Skirts</option>
+          <option value="Caps">Caps</option>
+          <option value="Belts">Belts</option>
+          <option value="Socks">Socks</option>
+          <option value="Boxer">Boxer</option>
         </select>
       </div>
 

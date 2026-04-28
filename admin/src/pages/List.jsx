@@ -27,6 +27,10 @@ const List = () => {
     'True Body',
     'Tops & Blouses',
     'Dresses & Skirts',
+    'Caps',
+    'Belts',
+    'Socks',
+    'Boxer',
   ];
 
   const fetchList = async()=>{
