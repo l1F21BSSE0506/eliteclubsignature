@@ -14,13 +14,13 @@ const Contact = () => {
         <div className='flex flex-col justify-center items-start gap-6'>
           <p className='font-semibold text-xl text-gray-600'>Our Store</p>
           <p className='text-gray-500'>10 F1 Wapda Avenue, WAPDA Town Block F 1<br /> Wapda Town Phase 1, Lahore, 54000, Pakistan</p>
-          <p className='text-gray-500'>Tel: 03334655184 <br /> Email: Eliteclubsignature@gmail.com</p>
+          <p className='text-gray-500'>Tel: +92 3107302443 <br /> Email: Eliteclubsignature@gmail.com</p>
           <p className='font-semibold text-xl text-gray-600'>Careers at Forever</p>
           <p className='text-gray-600'>Learn more about our teams and job openings.</p>
         </div>
         <div className='flex gap-4'>
           <a
-            href='https://www.instagram.com/eliteclubsignature?igsh=MWNhbmJnOHV5Z2Z0Nw=='
+            href='https://www.instagram.com/eliteclubsignature__?igsh=cnd5ZnprMTYwbGRh&utm_source=qr'
             target='_blank'
             rel='noopener noreferrer'
             className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'

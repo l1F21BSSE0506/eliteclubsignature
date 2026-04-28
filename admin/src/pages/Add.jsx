@@ -126,6 +126,9 @@ const Add = ({token}) => {
           <option value="Shirts">Shirts</option>
           <option value="T-shirts">T-shirts</option>
           <option value="Polo">Polo</option>
+          <option value="Pant">Pant</option>
+          <option value="Trouser">Trouser</option>
+          <option value="Shorts">Shorts</option>
           <option value="Blazers">Blazers</option>
           <option value="Tank Tops">Tank Tops</option>
           <option value="Boxers">Boxers</option>

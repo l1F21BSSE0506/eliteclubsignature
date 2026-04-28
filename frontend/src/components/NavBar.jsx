@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       {/* Logo */}
-      <Link to='/'><img src={assets.logo} className="w-36" alt="Logo" /></Link>
+      <Link to='/'><img src={assets.logo} className="w-44" alt="Logo" /></Link>
 
       {/* Desktop Nav Links */}
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
@@ -74,7 +74,8 @@ const NavBar = () => {
           </div>
         </li>
 
-        <li>
+        {/* KIDS Dropdown */}
+        <li className="relative group">
           <NavLink to="/collection?category=Kids" className="flex flex-col items-center gap-1">
             {({ isActive }) => (
               <>
@@ -83,6 +84,15 @@ const NavBar = () => {
               </>
             )}
           </NavLink>
+          <div className="absolute hidden group-hover:block bg-white shadow-md rounded w-[220px] p-4 z-50 left-0 top-full">
+            <div className="flex flex-col gap-2">
+              {kidsSubCategories.map(sub => (
+                <Link key={sub} to={`/collection?category=Kids&subCategory=${encodeURIComponent(sub)}`} className="hover:text-black text-gray-500 hover:font-bold">
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          </div>
         </li>
         <li>
           <NavLink to="/collection?category=Fragrance" className="flex flex-col items-center gap-1">
@@ -209,7 +219,7 @@ const NavBar = () => {
             {/* Mobile Men Menu */}
             <MobileDropdown title="MEN" category="Men" subCategories={menSubCategories} setVisible={setVisible} assets={assets} />
 
-            <NavLink onClick={() => setVisible(false)} className='block py-3 pl-6 border-b hover:bg-gray-50' to="/collection?category=Kids">KIDS</NavLink>
+            <MobileDropdown title="KIDS" category="Kids" subCategories={kidsSubCategories} setVisible={setVisible} assets={assets} />
             <NavLink onClick={() => setVisible(false)} className='block py-3 pl-6 border-b hover:bg-gray-50' to="/collection?category=Fragrance">FRAGRANCE</NavLink>
             <MobileDropdown title="ACCESSORIES" category="Accessories" subCategories={accessoriesSubCategories} setVisible={setVisible} assets={assets} />
             <NavLink onClick={() => setVisible(false)} className='block py-3 pl-6 border-b hover:bg-gray-50' to="/about">ABOUT</NavLink>
@@ -269,6 +279,8 @@ const menSubCategories = [
   'Shirts', 'T-shirts', 'Polo', 'Blazers', 'Tank Tops', 'Boxers',
   'Bottoms', 'Sweaters & Cardigans', 'Jackets & Coats', 'Hoodies & Sweatshirts',
 ];
+
+const kidsSubCategories = ['T-shirts', 'Shirts', 'Polo', 'Pant', 'Trouser', 'Shorts'];
 
 const accessoriesSubCategories = ['Caps', 'Belts', 'Socks', 'Boxer'];
 

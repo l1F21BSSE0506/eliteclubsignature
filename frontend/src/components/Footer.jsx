@@ -32,11 +32,11 @@ const Footer = () => {
         <div>
             <p className='text-sm font-semibold mb-5'>GET IN TOUCH</p>
             <ul className='flex flex-col gap-1 text-gray-600 text-[12px]'>
-                <li>03334655184</li>
+                <li>+92 3107302443</li>
                 <li>Eliteclubsignature@gmail.com</li>
                 <li>
                     <a
-                        href="https://www.instagram.com/eliteclubsignature?igsh=MWNhbmJnOHV5Z2Z0Nw=="
+                        href="https://www.instagram.com/eliteclubsignature__?igsh=cnd5ZnprMTYwbGRh&utm_source=qr"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block border border-black px-3 py-1 hover:bg-black hover:text-white transition-all"
